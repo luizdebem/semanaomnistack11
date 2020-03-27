@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import InputMask from 'react-input-mask';
 import './styles.css';
 import logoImg from '../../assets/logo.svg'
 import api from '../../services/api';
@@ -51,7 +52,7 @@ export default function Register() {
         <form onSubmit={handleRegister}>
           <input placeholder="Nome da ONG" value={name} onChange={e => setName(e.target.value)}></input>
           <input type="email" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)}></input>
-          <input placeholder="WhatsApp" value={whatsapp} onChange={e => setWhatsapp(e.target.value)}></input>
+          <InputMask mask="(99) 99999-9999" placeholder="WhatsApp" value={whatsapp} onChange={e => setWhatsapp(e.target.value)}></InputMask>
 
           <div className="input-group">
             <input placeholder="Cidade" value={city} onChange={e => setCity(e.target.value)}></input>
