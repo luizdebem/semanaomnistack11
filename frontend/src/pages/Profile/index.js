@@ -13,14 +13,19 @@ export default function Profile() {
   const ongName = localStorage.getItem('ongName');
 
   useEffect(() => {
+    if (!ongId) {
+      history.push('/');
+      alert('Você precisa estar logado para acessar essa página');
+    }
     api.get('profile', {
       headers: {
         Authorization: ongId
       }
     }).then(response => {
       setIncidents(response.data);
-    })
-  }, [ongId]);
+    });
+
+  }, [ongId, history]);
 
   async function handleDeleteIncident(id) {
     try {

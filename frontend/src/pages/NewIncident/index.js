@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.css'
 import logoImg from '../../assets/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
@@ -11,6 +11,13 @@ export default function NewIncident() {
   const [value, setValue] = useState('');
   const ongId = localStorage.getItem('ongId');
   const history = useHistory();
+
+  useEffect(() => {
+    if (!ongId) {
+      history.push('/');
+      alert('Você precisa estar logado para acessar essa página');
+    }
+  }, [ongId, history]);
 
   async function handleNewIncident(e) {
     e.preventDefault();
